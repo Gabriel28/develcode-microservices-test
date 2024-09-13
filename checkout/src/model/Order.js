@@ -8,13 +8,21 @@ const Order = sequelize.define('Order', {
         autoIncrement: true,
         allowNull: false,
     },
+    paymentId: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    card: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     status: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "PENDING"
     },
     amount: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.DOUBLE,
         allowNull: false,
     },
 });
