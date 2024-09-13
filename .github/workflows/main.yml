@@ -1,0 +1,53 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-checkout-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Install dependencies
+        run: |
+          cd checkout
+          npm install
+
+      - name: Run tests
+        run: |
+          cd checkout
+          npm test
+
+  test-payment-service:
+    runs-on: ubuntu-latest
+    needs: test-checkout-service  # Garante que o teste do checkout seja executado antes
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+
+      - name: Build with Maven
+        run: |
+          cd payment
+          mvn install
+
+      - name: Run tests
+        run: |
+          cd payment
+          mvn test
