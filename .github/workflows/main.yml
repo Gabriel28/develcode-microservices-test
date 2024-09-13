@@ -15,28 +15,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: List files for debugging
+        run: ls -la
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
-      - name: Display Node.js version
-        run: node -v
-
       - name: Install dependencies
         run: |
-          cd checkout
+          cd checkout # Certifique-se de que este diretório exista
           npm install
-        working-directory: checkout
 
       - name: Run tests
         run: |
+          cd checkout
           npm test
-        working-directory: checkout
-
-      - name: Output logs if tests fail
-        if: failure()
-        run: cat ./checkout/logs/test-results.log
 
   test-payment-service:
     runs-on: ubuntu-latest
@@ -45,25 +40,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: List files for debugging
+        run: ls -la
+
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Display Java version
-        run: java -version
-
       - name: Build with Maven
         run: |
+          cd payment # Certifique-se de que este diretório exista
           mvn install
-        working-directory: payment
 
       - name: Run tests
         run: |
+          cd payment
           mvn test
-        working-directory: payment
-
-      - name: Output logs if tests fail
-        if: failure()
-        run: cat ./payment/target/surefire-reports/*.txt
