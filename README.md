@@ -155,4 +155,10 @@ npm run test
 
 ```
 mvn test
-``` 
+```
+
+
+
+## Melhorias 
+- Separar a lógica do simulador PaymentController.js e usar uma camada DTO para manipular os dados.
+- Utilizar um broker de pagamentos em modo sandbox para não realizar as transações em modo random. 
