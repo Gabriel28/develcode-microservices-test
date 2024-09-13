@@ -60,7 +60,7 @@ curl --location 'localhost:3000/api/checkout/payment-order' \
 }'
 
 ``
-![alt text](image.png)
+![alt text](/resources/image.png)
 
 Card será utilizado para realizar algumas simulações de caso de uso, por exemplo: 
 
