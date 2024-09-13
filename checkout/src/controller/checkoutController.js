@@ -3,11 +3,6 @@ import Order from "../model/Order.js";
 import CheckoutService from "../services/checkoutService.js";
 
 class CheckoutController {
-
-    static test = (req, res) => {
-        res.status(200).json(Date.now());
-    }
-
     static createPaymentOrder = async (req, res) => {
         try {
             const { card, amount } = req.body;
@@ -19,8 +14,6 @@ class CheckoutController {
             const paymentId = uuidv4();
             const order = await Order.create({ amount, paymentId, card, status: 'PENDING' });
             const response = await CheckoutService.processPayment(order.orderId, paymentId, card, amount);
-
-            console.log(response.status); // Apenas para consultar log no docker
             order.status = response.status;
             await order.save();
 
@@ -34,8 +27,7 @@ class CheckoutController {
                 order
             });
         } catch (err) {
-            console.error('Erro no processamento do pedido, tente novamente.', err); //  Apenas para consultar log no docker
-            return res.status(500).json({ error: 'Erro ao processar o pedido, tente novamente.' });
+            return res.status(500).json({ message: 'Erro ao processar o pedido, tente novamente.' });
         }
     }
 }
