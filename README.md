@@ -3,7 +3,7 @@
 O objetivo do teste é criar dois microservices para um sistema simulando um pedido de compra.
 O fluxo deve ser capaz de cancelar um pedido automaticamente caso o pagamento falhe. 
 
-> *Deve ser realizado um microserive em Java e o outro em Node.JS*
+> *Deve ser realizado um microservice em Java e o outro em Node.JS*
 
 <img src="/resources/fluxo-story.svg" alt="fluxo-storytelling">
 
