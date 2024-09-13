@@ -6,7 +6,6 @@ const router = express.Router();
 /*
     POST
 */
-router.post("/api/checkout/order", CheckoutController.test)
 router.post("/api/checkout/payment-order", CheckoutController.createPaymentOrder)
 
 export default router;
