@@ -8,12 +8,6 @@ public class PaymentRequest {
     public PaymentRequest() {
     }
 
-    // Construtor com parâmetros enviados do checkout
-    public PaymentRequest(Double amount, String card) {
-        this.amount = amount;
-        this.card = card;
-    }
-
     // Getter e setter
     public Double getAmount() {
         return amount;
