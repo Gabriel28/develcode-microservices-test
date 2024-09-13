@@ -1,0 +1,50 @@
+version: '3.7'
+
+services:
+  checkout:
+    build:
+      context: ./checkout
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy    
+    networks:
+      - app-network
+
+  payment-gateway:
+    build:
+      context: ./payment_gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      db:
+        condition: service_healthy  
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8
+    env_file:
+      - ./checkout/.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
