@@ -1,14 +1,15 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import routes from './routes/index.js';
 import sequelize from './config/database.js';
+dotenv.config();
 
 const app = express();
 routes(app);
 
-const port = process.env.PORT || 3000;
-sequelize.sync( {alter: true}).then(() => {
+sequelize.sync( {force: true, alter: true}).then(() => {
     console.log("Banco foi sincronizado com sucesso")
-    app.listen(port, () => {
+    app.listen(process.env.PORT, () => {
         console.log('Checkout Service na porta 3000');
     });
 }).catch (err => {
