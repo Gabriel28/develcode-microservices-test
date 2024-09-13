@@ -46,10 +46,10 @@ jobs:
 
       - name: Build with Maven
         run: |
-          cd payment
+          cd payment_gateway
           mvn install
 
       - name: Run tests
         run: |
-          cd payment
+          cd payment_gateway
           mvn test
