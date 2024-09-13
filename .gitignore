@@ -1,3 +1,5 @@
 .idea
 /checkout/node_modules
 node_modules
+./checkout/.env
+.env
