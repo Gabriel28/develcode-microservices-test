@@ -161,4 +161,5 @@ mvn test
 
 ## Melhorias 
 - Separar a lógica do simulador PaymentController.js e usar uma camada DTO para manipular os dados.
-- Utilizar um broker de pagamentos em modo sandbox para não realizar as transações em modo random. 
+- Utilizar um broker de pagamentos em modo sandbox para não realizar as transações em modo random.
+- Utilizar dois bancos de dados em paralelo, um para checkout guardar o status do pedido e de pagaento e outro para registrar a efetivação do pagamento. 
