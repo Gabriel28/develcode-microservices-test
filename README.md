@@ -5,7 +5,7 @@ O fluxo deve ser capaz de cancelar um pedido automaticamente caso o pagamento fa
 
 > *Deve ser realizado um microserive em Java e o outro em Node.JS*
 
-<img src="../develcode-microservices-test/resources/fluxo-story.svg" alt="fluxo-storytelling">
+<img src="/resources/fluxo-story.svg" alt="fluxo-storytelling">
 
 # Microservices 
 
@@ -58,6 +58,7 @@ curl --location 'localhost:3000/api/checkout/payment-order' \
     "card": "AMEX",
     "amount": "45600.08"
 }'
+
 ``
 ![alt text](image.png)
 
@@ -88,9 +89,12 @@ Response 400 - Bad Request, neste caso o pagamento foi negado.
 {
     "message": "Pedido cancelado devido a falha no pagamento"
 }
+
 ```
 Neste caso o pedido foi cancelado
-<img src="../develcode-microservices-test/resources/registersql.png" alt="sql-register">
+
+
+<img src="/resources/registersql.png" alt="sql-register">
 
 ## Payment Gateway
 
@@ -137,7 +141,7 @@ Dentro do nosso PaymentController.java realizamos a simulação com um ``Random(
 
 ### Para o Checkout (dentro do seu diretório): 
 
-<img src="../develcode-microservices-test/resources/Tests_and_coverage.png" alt="test-checkout">
+<img src="/resources/Tests_and_coverage.png" alt="test-checkout">
 
 
 ```
@@ -146,7 +150,7 @@ npm run test
 
 ### Para o Payment:
 
-<img src="../develcode-microservices-test/resources/test_payment.png" alt="test-checkout">
+<img src="/resources/test_payment.png" alt="test-checkout">
 
 
 ```
