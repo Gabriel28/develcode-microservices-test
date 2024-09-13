@@ -1,5 +1,5 @@
 import axios from 'axios';
-import CheckoutService from '../../../src/services/checkoutService.js';
+import CheckoutService from '../../src/services/checkoutService.js';
 
 // Mock para o módulo axios
 jest.mock('axios');
